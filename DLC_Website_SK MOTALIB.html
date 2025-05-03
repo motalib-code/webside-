@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Literacy Course</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-size: 16px; transition: font-size 0.3s; }
+    .font-large { font-size: 20px; }
+    .font-xlarge { font-size: 24px; }
+    .chat-container { display: none; position: fixed; bottom: 20px; right: 20px; width: 300px; background: white; border: 1px solid #ccc; border-radius: 8px; }
+    .chat-container.active { display: block; }
+  </style>
+</head>
+<body class="bg-gray-100 font-sans">
+  <!-- Navigation -->
+  <nav class="bg-blue-600 text-white p-4 sticky top-0">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-2xl font-bold">DLC</h1>
+      <ul class="flex space-x-4">
+        <li><a href="#home" class="hover:underline">Home</a></li>
+        <li><a href="#tutorials" class="hover:underline">Tutorials</a></li>
+        <li><a href="#chat" class="hover:underline" onclick="toggleChat()">AI Chat</a></li>
+        <li><a href="#feedback" class="hover:underline">Feedback</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Home Section -->
+  <section id="home" class="bg-blue-100 py-16 text-center">
+    <div class="container mx-auto">
+      <h2 class="text-4xl font-bold mb-4">Empowering Digital Literacy!</h2>
+      <p class="text-lg mb-6">Learn digital tools easily with our user-friendly platform designed for parents and elderly users.</p>
+      <button class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">Get Started</button>
+    </div>
+  </section>
+
+  <!-- Tutorials Section -->
+  <section id="tutorials" class="py-16">
+    <div class="container mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-8">Tutorials</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-lg shadow">
+          <img src="https://static1.anpoimages.com/wordpress/wp-content/uploads/2022/12/mariia-shalabaieva-whatsapp-unsplash.jpg" alt="WhatsApp Tutorial" class="w-full h-40 object-cover rounded">
+          <h3 class="text-xl font-semibold mt-4">WhatsApp Basics</h3>
+          <p class="mt-2">Learn to chat, call, and share media with WhatsApp.</p>
+          <a href="#" class="text-blue-600 hover:underline mt-4 block">Watch Tutorial</a>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow">
+          <img src="https://th.bing.com/th/id/OIP.qO25l5qK1IkEjafsmffjzAHaEo?rs=1&pid=ImgDetMain" alt="Paytm Tutorial" class="w-full h-40 object-cover rounded">
+          <h3 class="text-xl font-semibold mt-4">Paytm Payments</h3>
+          <p class="mt-2">Master digital payments with Paytm.</p>
+          <a href="#" class="text-blue-600 hover:underline mt-4 block">Watch Tutorial</a>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow">
+          <img src="https://th.bing.com/th/id/OIP.J9-ZUxRBAt0nWc75HOF6pAHaEe?rs=1&pid=ImgDetMain" alt="Google Maps Tutorial" class="w-full h-40 object-cover rounded">
+          <h3 class="text-xl font-semibold mt-4">Google Maps</h3>
+          <p class="mt-2">Navigate with ease using Google Maps.</p>
+          <a href="#" class="text-blue-600 hover:underline mt-4 block">Watch Tutorial</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI Chatbot -->
+  <div id="chat" class="chat-container" aria-live="polite">
+    <div class="p-4 bg-blue-600 text-white rounded-t-lg flex justify-between">
+      <h3>DigiBuddy</h3>
+      <button onclick="toggleChat()">X</button>
+    </div>
+    <div id="chatBox" class="p-4 h-64 overflow-y-auto"></div>
+    <div class="p-4 border-t">
+      <input id="chatInput" type="text" class="w-full p-2 border rounded" placeholder="Ask DigiBuddy...">
+      <button onclick="sendMessage()" class="bg-blue-600 text-white px-4 py-2 mt-2 rounded">Send</button>
+    </div>
+  </div>
+
+  <!-- Advertisement Section -->
+  <section id="advertisement" class="py-16 bg-blue-50">
+    <div class="container mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-8">Enhance Your Learning Experience!</h2>
+      <div class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow">
+        <p class="text-lg mb-4"><strong>Advanced Chatbot:</strong> For a production site, integrate Dialogflow or ChatGPT API. Replace the JavaScript chatbot with an iframe or API calls for smarter, real-time responses (requires API keys).</p>
+        <p class="text-lg mb-4"><strong>Engaging Tutorials:</strong> Replace placeholder images with actual video embeds (e.g., YouTube iframes) for real, interactive tutorials on WhatsApp, Paytm, and Google Maps.</p>
+        <p class="text-lg mb-4"><strong>Multi-Language Support:</strong> The language toggle is simulated. Use a library like i18next for full multi-language support to reach a global audience.</p>
+        <p class="text-lg mb-6"><strong>Seamless Experience:</strong> Test the site on mobile and desktop to ensure responsiveness and accessibility for all users.</p>
+        <a href="#feedback" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 inline-block">Share Your Thoughts</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feedback Section -->
+  <section id="feedback" class="py-16 bg-gray-200">
+    <div class="container mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-8">Feedback</h2>
+      <form id="feedbackForm" class="max-w-lg mx-auto bg-white p-6 rounded-lg shadow">
+        <div class="mb-4">
+          <label for="name" class="block text-lg">Name</label>
+          <input type="text" id="name" class="w-full p-2 border rounded" required>
+        </div>
+        <div class="mb-4">
+          <label for="feedbackText" class="block text-lg">Your Feedback</label>
+          <textarea id="feedbackText" class="w-full p-2 border rounded" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">Submit</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Accessibility Controls -->
+  <div class="fixed bottom-4 left-4 flex space-x-2">
+    <button onclick="changeFontSize('small')" class="bg-blue-600 text-white px-4 py-2 rounded">A-</button>
+    <button onclick="changeFontSize('large')" class="bg-blue-600 text-white px-4 py-2 rounded">A+</button>
+    <button onclick="toggleLanguage()" class="bg-blue-600 text-white px-4 py-2 rounded">Language</button>
+    <button onclick="readPage()" class="bg-blue-600 text-white px-4 py-2 rounded">Voice</button>
+  </div>
+
+  <script>
+    // Font Size Adjustment
+    function changeFontSize(size) {
+      document.body.className = size === 'large' ? 'font-large' : size === 'xlarge' ? 'font-xlarge' : '';
+    }
+
+    // Language Toggle (Simulated)
+    function toggleLanguage() {
+      alert('Language switched! (Add multi-language support here)');
+    }
+
+    // Voice Command (Text-to-Speech)
+    function readPage() {
+      const text = document.querySelector('#home p').textContent;
+      const utterance = new SpeechSynthesisUtterance(text);
+      window.speechSynthesis.speak(utterance);
+    }
+
+    // Chatbot Functionality
+    const responses = {
+      'how to use whatsapp': 'To use WhatsApp, download the app, verify your number, and start chatting!',
+      'what is paytm': 'Paytm is a digital payment app for transactions and bill payments.',
+      'how to navigate': 'Google Maps helps you find directions. Enter your destination and follow the route!'
+    };
+
+    function toggleChat() {
+      const chat = document.getElementById('chat');
+      chat.classList.toggle('active');
+    }
+
+    function sendMessage() {
+      const input = document.getElementById('chatInput');
+      const chatBox = document.getElementById('chatBox');
+      const message = input.value.toLowerCase().trim();
+      if (!message) return;
+
+      chatBox.innerHTML += `<p><strong>You:</strong> ${message}</p>`;
+      const response = responses[message] || 'Sorry, I don’t understand. Try asking about WhatsApp, Paytm, or Google Maps!';
+      chatBox.innerHTML += `<p><strong>DigiBuddy:</strong> ${response}</p>`;
+      chatBox.scrollTop = chatBox.scrollHeight;
+      input.value = '';
+    }
+
+    // Form Submission
+    document.getElementById('feedbackForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Feedback submitted! Thank you!');
+      e.target.reset();
+    });
+  </script>
+</body>
+</html>
